@@ -64,7 +64,7 @@ const universalScraper = async (ctx: MovieScrapeContext | ShowScrapeContext): Pr
   const streamResJson: InfoResponse = JSON.parse(streamRes);
 
   const captions: Caption[] = [];
-  for (const sub of streamResJson.subs) {
+  for (const sub of (streamResJson.subs || [])) {
     // Some subtitles are named <Language>.srt, some are named <LanguageCode>:hi, or just <LanguageCode>
     let language: string | null = '';
     if (sub.name.includes('.srt')) {
